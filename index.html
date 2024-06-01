@@ -12,9 +12,26 @@
             <h1>Welcome to your 📚  Library!</h1>
         </div>
     </header>
-    <main>
-        
-    </main>
+        <dialog id="dialog-form">
+            <form action="" method="POST" autocomplete="off">
+                <input type="text" name="title" placeholder="Title"></br>
+                <input type="text" name="author" placeholder="Author"></br>
+                <input type="number" name="pages" placeholder="No. of Pages"></br>
+                <select name="read-the-book">
+                    <option>Yes</option>
+                    <option selected>No</option>
+                </select>
+                <div id="dialog-button-container">
+                    <button type="" id="add-book">Add</button>
+                    <button type="" id="close-form">Close</button>
+                </div>
+            </form>    
+        </dialog>
+        <div id="add-container">
+            <button id="add">Add a Book</button>
+        </div>
+        <div id="main">
+        </div> 
     <script src="script.js"></script>
 </body>
 </html>
