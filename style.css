@@ -37,7 +37,7 @@ button {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 3rem;
     background: url(images/libraryiImage.png);
-    background-size: contain;
+    background-size: contain, cover;
     flex: 1 0 auto;
 }
 
