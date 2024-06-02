@@ -83,7 +83,6 @@ function clear() {
 }
 
 function addToLibrary(event) {
-    clear();
     event.preventDefault();
     const titleInput = document.querySelector('input[name="title"]');
     const authorInput = document.querySelector('input[name="author"]');
