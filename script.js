@@ -25,8 +25,8 @@ function initialize() {
         card.classList.add("book-container");
 
         let title = document.createElement("p");
-        if(book.title.length > 10) {
-            title.textContent = "Title: " + book.title.slice(0, 11) + "...";
+        if(book.title.length > 16) {
+            title.textContent = "Title: " + book.title.slice(0, 17) + "...";
         }else {
             title.textContent = "Title : " + book.title;
         }
@@ -95,6 +95,81 @@ closeDialog.addEventListener("click", (event) => {
 
 const addBook = document.querySelector("#add-book");
 addBook.addEventListener("click", addtoLibrary);
+
+function clear() {
+    let child = main.firstChild;
+    while(child) {
+        main.removeChild(remove);
+        child = main.firstChild;
+    }
+}
+
+function addtoLibrary(event) {
+    clear();
+    event.preventDefault();
+    const titleInput = document.querySelector('input[name="title"]');
+    const authorInput = document.querySelector('input[name="author"]');
+    const pageInput = document.querySelector('input[name="pages"]');
+    const readStatus = document.querySelector('select');
+    
+    let book = new Book(
+        titleInput.value,
+        authorInput.value,
+        pageInput.value,
+        readStatus.value
+    );
+
+    library.push(book);
+
+    titleInput.value = "";
+    authorInput.value = "";
+    pageInput.value = "";
+    readStatus.value = "";
+
+    dialog.close();
+    initialize();
+    console.log(library);
+}
+
+function removeFromLibrary(event) {
+    console.log("Hello from remove button");
+    const index = event.target.getAttribute("data-index");
+    if(library.length === 1)
+        library = [];
+    else if(index === 0)
+        library = library.slice(1);
+    else if(index === library.length-1)
+        library = library.slice(0,index);
+    else
+        library = library.slice(0,index).concat(library.slice(index+1));
+    clear();
+    initialize();
+}
+
+function readOrNot(event) {
+    const button = event.target;
+    const index = button.getAttribute('data-index');
+    if(button.textContent === 'Read') {
+        button.textContent = 'Not Read';
+        library[index].read = 'No';
+        button.style.backgroundColor = "#19745e";
+        button.style.border = "2px #3BBA9C solid";
+        button.style.padding = "0.5rem";
+        button.style.borderRadius = "5px";
+        button.style.color = "#67c9b0";
+        button.style.fontWeight = "bold";
+    } else if(button.textContent === 'Not Read') {
+        button.textContent = 'Read';
+        library[index].read = 'Yes';
+        button.style.backgroundColor = "#2E3047";
+        button.style.border = "2px #3BBA9C solid";
+        button.style.padding = "0.5rem";
+        button.style.borderRadius = "5px";
+        button.style.color = "#3BBA9C";
+        button.style.fontWeight = "bold";
+    }
+    
+}
 
 
 
