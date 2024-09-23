@@ -7,7 +7,7 @@ function Book(title, author, pages, read) {
 
 let library = [
     new Book("Think and Grow Rich", "Napoleon Hill", "238", "Yes"),
-    new Book("As a Man Thinketh", "James Allen", "60-80", "No")
+    new Book("As a Man Thinketh", "James Allen", "80", "No")
 ];
 
 const main = document.querySelector("#main");
@@ -26,7 +26,7 @@ function initialize() {
         card.classList.add("book-container");
 
         let title = document.createElement("p");
-        title.textContent = book.title.length > 16 ? `Title: ${book.title.slice(0, 17)}...` : `Title: ${book.title}`;
+        title.textContent = book.title.length > 12 ? `Title: ${book.title.slice(0, 13)}...` : `Title: ${book.title}`;
 
         let author = document.createElement("p");
         author.textContent = `Author: ${book.author}`;
@@ -87,7 +87,7 @@ function addToLibrary(event) {
     const titleInput = document.querySelector('input[name="title"]');
     const authorInput = document.querySelector('input[name="author"]');
     const pageInput = document.querySelector('input[name="pages"]');
-    const readStatus = document.querySelector('select[name="read-status"]');
+    const readStatus = document.querySelector('select[name="read-the-book"]');
 
     if (!titleInput.value || !authorInput.value || !pageInput.value) {
         alert("Please fill in all fields");
@@ -98,7 +98,7 @@ function addToLibrary(event) {
         titleInput.value,
         authorInput.value,
         pageInput.value,
-        readStatus.value
+        readStatus.value,
     );
 
     library.push(book);
